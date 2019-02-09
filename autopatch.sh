@@ -15,9 +15,9 @@
 # more details.
 
 top_dir=`pwd`
-utils_dir="$top_dir/vendor/x86/utils"
-patch_dir="$utils_dir/android_p/google_diff/x86"
-private_utils_dir="$top_dir/vendor/x86/PRIVATE/utils"
+utils_dir="$top_dir/vendor/x86_kernel"
+patch_dir="$utils_dir/android_p/google_diff"
+private_utils_dir="$top_dir/vendor/x86_kernel/PRIVATE"
 private_patch_dir="$private_utils_dir/android_p/google_diff/$TARGET_PRODUCT"
 
 current_project=""
@@ -111,5 +111,5 @@ else
     echo "           INFO : SOME PATCHES ARE APPLIED ALREADY  !!                     "
     echo "==========================================================================="
   fi
-  sed -i '/^/d' $top_dir/vendor/intel/utils/Android.mk
+  sed -i '/^/d' $top_dir/vendor/x86_kernel/Android.mk
 fi

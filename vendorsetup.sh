@@ -10,7 +10,7 @@ function lunch
    aosp_lunch $*
 
    rm -rf Android.mk
-   vendor/x86_kernel/utils/autopatch.sh
+   vendor/x86_kernel/autopatch.sh
 
 }
 
