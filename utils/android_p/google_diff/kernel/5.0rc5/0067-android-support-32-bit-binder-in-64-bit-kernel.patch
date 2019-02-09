@@ -1,0 +1,27 @@
+From 3175af64164a18a2e29a19b57be3463a822f1d1e Mon Sep 17 00:00:00 2001
+From: Chih-Wei Huang <cwhuang@linux.org.tw>
+Date: Fri, 3 Apr 2015 02:41:10 +0800
+Subject: [PATCH 67/70] android: support 32-bit binder in 64-bit kernel
+
+---
+ drivers/android/Kconfig | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/android/Kconfig b/drivers/android/Kconfig
+index db8b4a391cb48f..264cb39d02a565 100644
+--- a/drivers/android/Kconfig
++++ b/drivers/android/Kconfig
+@@ -46,8 +46,8 @@ config ANDROID_BINDER_DEVICES
+ 
+ config ANDROID_BINDER_IPC_32BIT
+ 	bool "Use old (Android 4.4 and earlier) 32-bit binder API"
+-	depends on !64BIT && ANDROID_BINDER_IPC
+-	default y
++	depends on ANDROID_BINDER_IPC
++	default !64BIT
+ 	---help---
+ 	  The Binder API has been changed to support both 32 and 64bit
+ 	  applications in a mixed environment.
+-- 
+2.17.1
+
