@@ -24,6 +24,7 @@ current_project=""
 previous_project=""
 conflict=""
 conflict_list=""
+applied_already=""
 
 apply_patch() {
 
@@ -73,6 +74,7 @@ apply_patch() {
       fi
     else
       echo "        Already applied         $i"
+      applied_already="y"
     fi
   done
 }
@@ -102,6 +104,12 @@ if [[ "$conflict" == "y" ]]; then
   # return 1
 else
   echo "==========================================================================="
-  echo "           INFO : All patches applied fine !!                              "
+  echo "           SUCCESS : All patches applied fine !!                           "
   echo "==========================================================================="
+  if [[ "$applied_already" == "y" ]]; then
+    echo "==========================================================================="
+    echo "           INFO : SOME PATCHES ARE APPLIED ALREADY  !!                     "
+    echo "==========================================================================="
+  fi
+  sed -i '/^/d' $top_dir/vendor/intel/utils/Android.mk
 fi
